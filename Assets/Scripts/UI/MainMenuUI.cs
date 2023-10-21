@@ -18,14 +18,6 @@ public class MainMenuUI : MonoBehaviour {
             });
     }
 
-    public void ShowSettingsUI() {
-
-    }
-
-    public void ShowMainUI() {
-
-    }
-
     public void Exit() {
         print("Exiting game.");
         Application.Quit();
