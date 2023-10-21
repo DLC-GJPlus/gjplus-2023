@@ -12,8 +12,22 @@ public class MainMenuUI : MonoBehaviour {
         this._foreground.gameObject.SetActive(true);
         this._foreground
             .DOColor(Color.black, 1f)
-            .SetEase(Ease.InOutCubic);
+            .SetEase(Ease.InOutCubic)
+            .OnComplete(() => {
+                SceneManager.LoadScene(GameSceneName);
+            });
+    }
 
-        SceneManager.LoadScene(GameSceneName);
+    public void ShowSettingsUI() {
+
+    }
+
+    public void ShowMainUI() {
+
+    }
+
+    public void Exit() {
+        print("Exiting game.");
+        Application.Quit();
     }
 }
