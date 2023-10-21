@@ -14,6 +14,7 @@ public class GameUI : MonoBehaviour {
   [SerializeField] private GameObject _pauseUI;
 
   private const string MainMenuSceneName = "MainMenu";
+  private const float TransitionDuration = 0.5f;
 
   public void LoadMainMenuScene() {
     this.FadeInForeground(() => {
@@ -48,7 +49,7 @@ public class GameUI : MonoBehaviour {
     this._foreground.gameObject.SetActive(true);
     this._foreground.color = new Color(0, 0, 0, 0);
     this._foreground
-      .DOColor(Color.black, 1f)
+      .DOColor(new Color(0, 0, 0, 1), TransitionDuration)
       .SetEase(Ease.InOutCubic)
       .OnComplete(() => {
         onComplete?.Invoke();
@@ -59,7 +60,7 @@ public class GameUI : MonoBehaviour {
     this._foreground.gameObject.SetActive(true);
     this._foreground.color = new Color(0, 0, 0, 1);
     this._foreground
-      .DOColor(new Color(1, 1, 1, 0), 1f)
+      .DOColor(new Color(0, 0, 0, 0), TransitionDuration)
       .SetEase(Ease.InOutCubic)
       .OnComplete(() => {
         this._foreground.gameObject.SetActive(false);
