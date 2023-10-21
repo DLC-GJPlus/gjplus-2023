@@ -10,8 +10,7 @@ public class GameManager : MonoBehaviour {
   }
 
   private IEnumerator Start() {
-
-    // Skip a frame to ensure everything is set up.
+    // Skip a frame to ensure everything else is set up.
     yield return null;
 
     this.OnSetupComplete?.Invoke();

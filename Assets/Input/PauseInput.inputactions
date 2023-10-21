@@ -1,14 +1,14 @@
 {
-    "name": "PlayerInput",
+    "name": "PauseInput",
     "maps": [
         {
-            "name": "Game",
+            "name": "Pause",
             "id": "110a5709-9d22-4447-9eb8-141c9153830e",
             "actions": [
                 {
                     "name": "Pause",
                     "type": "Button",
-                    "id": "e860c785-c146-449a-9738-2ab5722561d4",
+                    "id": "7543ae1a-60bb-4388-adc8-9cf9e4a74d80",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -18,22 +18,16 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "0ec9ce6d-b193-4d66-bdf6-91937799f3a5",
+                    "id": "62b8d10b-d21d-4559-8127-596bc8ab3aad",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Mouse & Keyboard",
+                    "groups": "",
                     "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
             ]
-        },
-        {
-            "name": "UI",
-            "id": "dbb871ae-66d2-439e-84cf-8398ac16cb8f",
-            "actions": [],
-            "bindings": []
         }
     ],
     "controlSchemes": [
