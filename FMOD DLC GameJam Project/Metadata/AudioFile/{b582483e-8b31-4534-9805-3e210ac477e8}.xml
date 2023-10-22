@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{b582483e-8b31-4534-9805-3e210ac477e8}">
+		<property name="assetPath">
+			<value>SFX/SFX_-_transmission_03.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.8169841269841269</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{43bb3bb6-a8ea-4d69-ae36-71108df2e3a5}</destination>
+		</relationship>
+	</object>
+</objects>

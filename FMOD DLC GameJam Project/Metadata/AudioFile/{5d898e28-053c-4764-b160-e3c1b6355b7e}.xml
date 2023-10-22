@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{5d898e28-053c-4764-b160-e3c1b6355b7e}">
+		<property name="assetPath">
+			<value>SFX/SFX_-_background_LOOP_08.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>8.0753061224489802</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{43bb3bb6-a8ea-4d69-ae36-71108df2e3a5}</destination>
+		</relationship>
+	</object>
+</objects>

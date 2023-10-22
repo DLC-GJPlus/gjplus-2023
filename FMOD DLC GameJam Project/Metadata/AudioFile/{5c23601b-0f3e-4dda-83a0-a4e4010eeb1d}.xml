@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{5c23601b-0f3e-4dda-83a0-a4e4010eeb1d}">
+		<property name="assetPath">
+			<value>SFX/SFX_-_droid_beeps_06.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.50063492063492065</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{43bb3bb6-a8ea-4d69-ae36-71108df2e3a5}</destination>
+		</relationship>
+	</object>
+</objects>
