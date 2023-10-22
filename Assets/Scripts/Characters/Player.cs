@@ -80,7 +80,7 @@ public class Player : MonoBehaviour, IPausable {
   private void Die() {
     this._gameInput.Disable();
     this._spriteRenderer
-      .DOColor(Color.black, 0.5f)
+      .DOColor(Color.black, 3f)
       .SetEase(Ease.InOutCubic);
 
     print("Died");
