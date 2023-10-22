@@ -4,6 +4,8 @@ using UnityEngine;
 public class Player : MonoBehaviour, IPausable {
   [SerializeField] private float _speed;
 
+  public OxygenTank OxygenTank { get; private set; }
+
   // References
   private GameInput _gameInput;
   private Rigidbody2D _rigidbody2D;
@@ -29,6 +31,7 @@ public class Player : MonoBehaviour, IPausable {
     this._gameInput.Enable();
 
     this._rigidbody2D = this.GetComponent<Rigidbody2D>();
+    this.OxygenTank = this.GetComponent<OxygenTank>();
   }
 
   private void Start() {

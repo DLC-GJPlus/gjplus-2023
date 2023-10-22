@@ -968,6 +968,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameUI
       objectReference: {fileID: 0}
+    - target: {fileID: 2732704923347031401, guid: 1d963f223e85f4922b35fa75dbd33aa8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2938494429796437196, guid: 1d963f223e85f4922b35fa75dbd33aa8, type: 3}
       propertyPath: _gameManager
       value: 
@@ -976,6 +980,10 @@ PrefabInstance:
       propertyPath: _pauseManager
       value: 
       objectReference: {fileID: 6256235693915135809}
+    - target: {fileID: 3434398400877344995, guid: 1d963f223e85f4922b35fa75dbd33aa8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3966495793365753743, guid: 1d963f223e85f4922b35fa75dbd33aa8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1154,6 +1162,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7672806554862981904, guid: 1d963f223e85f4922b35fa75dbd33aa8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9111255989653851531, guid: 1d963f223e85f4922b35fa75dbd33aa8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -39.968994
+      objectReference: {fileID: 0}
+    - target: {fileID: 9149400442231809525, guid: 1d963f223e85f4922b35fa75dbd33aa8, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

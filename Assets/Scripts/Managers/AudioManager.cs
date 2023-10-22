@@ -19,7 +19,6 @@ public class AudioManager : Singleton<AudioManager> {
   }
 
   public void PlayTravelWhoosh() {
-    Debug.Log("Playing whoosh");
     RuntimeManager.PlayOneShot(this._travelWhooshEvent);
   }
 

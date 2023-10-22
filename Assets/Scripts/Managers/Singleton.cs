@@ -6,7 +6,7 @@ public class Singleton<T> : MonoBehaviour where T : Component {
   protected virtual void Awake() {
     // Delete this object if another instance already exists.
     if (Instance != null && Instance != this as T) {
-      Destroy(this.gameObject);
+      DestroyImmediate(this.gameObject);
     } else {
       Instance = this as T;
     }
