@@ -49,12 +49,6 @@ public class OxygenTank : MonoBehaviour {
     this.StartCoroutine(this.ConsumeOxygen());
   }
 
-  private void Update() {
-    if (Input.GetKeyDown(KeyCode.R)) {
-      this.StartOxygenRefill();
-    }
-  }
-
   private void OnDestroy() {
     _savedSupply = this.Supply;
   }
