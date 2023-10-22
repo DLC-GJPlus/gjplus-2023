@@ -2420,10 +2420,6 @@ PrefabInstance:
       propertyPath: _gameUI
       value: 
       objectReference: {fileID: 2938494429796437196}
-    - target: {fileID: 5689652622551810320, guid: 660c5eceab38649aeadbb0bb72911b6a, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5921611534152946895, guid: 660c5eceab38649aeadbb0bb72911b6a, type: 3}
       propertyPath: m_Name
       value: MainUI

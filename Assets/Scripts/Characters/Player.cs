@@ -1,10 +1,12 @@
 using Cinemachine;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour, IPausable {
   [SerializeField] private float _speed;
 
+  public UnityEvent OnPlayerDied { get; private set; }
   public OxygenTank OxygenTank { get; private set; }
 
   // References
@@ -35,6 +37,8 @@ public class Player : MonoBehaviour, IPausable {
     this._rigidbody2D = this.GetComponent<Rigidbody2D>();
     this.OxygenTank = this.GetComponent<OxygenTank>();
     this._spriteRenderer = this.GetComponent<SpriteRenderer>();
+
+    this.OnPlayerDied = new UnityEvent();
   }
 
   private void Start() {
@@ -78,12 +82,16 @@ public class Player : MonoBehaviour, IPausable {
   }
 
   private void Die() {
+    this._interactable?.OnInteractableDeselected();
+    this._interactable = null;
+
     this._gameInput.Disable();
+
+    this.OnPlayerDied?.Invoke();
+
     this._spriteRenderer
       .DOColor(Color.black, 3f)
       .SetEase(Ease.InOutCubic);
-
-    print("Died");
   }
 
   private void GatherInput(out Vector2 moveInput, out bool wasInteractPressed) {

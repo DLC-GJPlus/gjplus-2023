@@ -58,7 +58,7 @@ public class GameUI : MonoBehaviour {
   }
 
   private void Start() {
-    this._oxygenUI.Initialize(this._gameManager.Player.OxygenTank);
+    this._oxygenUI.Initialize(this._gameManager.Player);
 
     this._gameManager.OnSetupComplete.AddListener(() => this.FadeOutForeground());
     this._pauseManager.OnPaused.AddListener(this.ShowPauseUI);

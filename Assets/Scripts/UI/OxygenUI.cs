@@ -1,21 +1,29 @@
 using DG.Tweening;
+using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class OxygenUI : MonoBehaviour {
-  [SerializeField] private Slider _slider;
+  [SerializeField] private RectTransform _fillImage;
   [SerializeField] private TMP_Text _supplyText;
   [SerializeField] private Image _warningImage;
+  [SerializeField] private List<float> _fillWidths;
 
   private readonly Color _showColor = new Color(1f, 0f, 0f, 1f);
   private readonly Color _hideColor = new Color(1f, 0f, 0f, 0f);
 
   private Sequence _tweeningSequence;
 
-  public void Initialize(OxygenTank oxygenTank) {
-    oxygenTank.OnOxygenSupplyChanged.AddListener(this.UpdateSlider);
-    oxygenTank.OnOxygenLow.AddListener(this.ShowWarning);
+  public void Initialize(Player player) {
+    player.OnPlayerDied.AddListener(() => this.ShowWarning(false));
+    player.OxygenTank.OnOxygenSupplyChanged.AddListener(this.UpdateSlider);
+    player.OxygenTank.OnOxygenLow.AddListener(this.ShowWarning);
+  }
+
+  private void OnDestroy() {
+    this._tweeningSequence?.Kill();
   }
 
   private void ShowWarning(bool isLow) {
@@ -33,7 +41,12 @@ public class OxygenUI : MonoBehaviour {
   }
 
   private void UpdateSlider(int amount, int maxAmount) {
-    this._slider.value = (float)amount / maxAmount;
+    // 0 -> 1
+    // 0, 12.5, 25, 37.5..., 100
+    // 0 -> 8
+    int widthFillBox = Mathf.CeilToInt((float)amount / maxAmount * 100 / 12.5f);
+    float width = this._fillWidths[widthFillBox];
+    this._fillImage.sizeDelta = new Vector2(width, this._fillImage.rect.height);
     this._supplyText.text = $"{amount} / {maxAmount}";
   }
 }
