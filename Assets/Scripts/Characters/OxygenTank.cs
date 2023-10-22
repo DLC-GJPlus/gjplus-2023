@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -21,9 +20,18 @@ public class OxygenTank : MonoBehaviour {
 
   private bool _wasLowOxygenTriggered;
 
-  public void StartRefillOxygen() {
+  public void StartOxygenRefill() {
     this._refillCoroutine = this.RefillOxygen();
     this.StartCoroutine(this._refillCoroutine);
+  }
+
+  public void StopOxygenRefill() {
+    if (this._refillCoroutine == null) {
+      return;
+    }
+
+    this.StopCoroutine(this._refillCoroutine);
+    this._refillCoroutine = null;
   }
 
   private void Awake() {
@@ -39,12 +47,6 @@ public class OxygenTank : MonoBehaviour {
   private void Start() {
     this.OnOxygenSupplyChanged?.Invoke(this.Supply, this.MaxSupply);
     this.StartCoroutine(this.ConsumeOxygen());
-  }
-
-  private void Update() {
-    if (Input.GetKeyDown(KeyCode.R)) {
-      this.StartRefillOxygen();
-    }
   }
 
   private void OnDestroy() {
@@ -63,6 +65,8 @@ public class OxygenTank : MonoBehaviour {
 
       yield return null;
     }
+
+    this._refillCoroutine = null;
   }
 
   private IEnumerator ConsumeOxygen() {

@@ -737,6 +737,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spaceship
       objectReference: {fileID: 0}
+    - target: {fileID: 7271107547974503392, guid: 28886eae8250d447db943a58cbddcd81, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7271107547974503392, guid: 28886eae8250d447db943a58cbddcd81, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8327648594893329066, guid: 28886eae8250d447db943a58cbddcd81, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8327648594893329066, guid: 28886eae8250d447db943a58cbddcd81, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.5000017
+      objectReference: {fileID: 0}
+    - target: {fileID: 8797775699451597202, guid: 28886eae8250d447db943a58cbddcd81, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.5000005
+      objectReference: {fileID: 0}
+    - target: {fileID: 8797775699451597202, guid: 28886eae8250d447db943a58cbddcd81, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.5000017
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
