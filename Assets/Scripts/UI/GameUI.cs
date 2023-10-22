@@ -14,6 +14,7 @@ public class GameUI : MonoBehaviour {
   [SerializeField] private GameObject _pauseUI;
   [SerializeField] private ElevatorUI _elevatorUI;
   [SerializeField] private GameObject _hatchUI;
+  [SerializeField] private OxygenUI _oxygenUI;
 
   private const string MainMenuSceneName = "MainMenu";
   private const float TransitionDuration = 0.5f;
@@ -57,6 +58,8 @@ public class GameUI : MonoBehaviour {
   }
 
   private void Start() {
+    this._oxygenUI.Initialize(this._gameManager.Player);
+
     this._gameManager.OnSetupComplete.AddListener(() => this.FadeOutForeground());
     this._pauseManager.OnPaused.AddListener(this.ShowPauseUI);
     this._pauseManager.OnUnpaused.AddListener(this.HidePauseUI);

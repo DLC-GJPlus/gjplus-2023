@@ -19,7 +19,6 @@ public class AudioManager : Singleton<AudioManager> {
   }
 
   public void PlayTravelWhoosh() {
-    Debug.Log("Playing whoosh");
     RuntimeManager.PlayOneShot(this._travelWhooshEvent);
   }
 
@@ -32,7 +31,7 @@ public class AudioManager : Singleton<AudioManager> {
   }
 
   protected override void Awake() {
-    base.Awake();
     DontDestroyOnLoad(this.gameObject);
+    base.Awake();
   }
 }

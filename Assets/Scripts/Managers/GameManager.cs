@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour {
   [SerializeField] private Player _player;
   [SerializeField] private Spaceship _spaceship;
 
+  public Player Player => this._player;
+
   public UnityEvent OnSetupComplete { get; private set; }
 
   private void Awake() {
