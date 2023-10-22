@@ -1,8 +1,10 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-public class PauseManager : MonoBehaviour {
+public class PauseManager : Singleton<PauseManager> {
   public UnityEvent OnPaused;
   public UnityEvent OnUnpaused;
 
@@ -29,7 +31,9 @@ public class PauseManager : MonoBehaviour {
     this.OnUnpaused?.Invoke();
   }
 
-  private void Awake() {
+  protected override void Awake() {
+    base.Awake();
+
     this.OnPaused = new UnityEvent();
     this.OnUnpaused = new UnityEvent();
 

@@ -425,7 +425,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5051993134955915432}
         m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: LoadGameScene
+        m_MethodName: LoadSpaceshipScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
