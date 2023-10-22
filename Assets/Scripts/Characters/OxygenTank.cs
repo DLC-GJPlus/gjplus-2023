@@ -16,13 +16,15 @@ public class OxygenTank : MonoBehaviour {
 
   private const int LowThreshold = 20;
 
+  private static int _savedSupply = -1;
+
   public void StartRefillOxygen() {
     this._refillCoroutine = this.RefillOxygen();
     this.StartCoroutine(this._refillCoroutine);
   }
 
   private void Awake() {
-    this.Supply = 30;
+    this.Supply = _savedSupply == -1 ? 30 : _savedSupply;
     this.MaxSupply = 100;
     this.ConsumptionRate = 1;
 
@@ -36,10 +38,8 @@ public class OxygenTank : MonoBehaviour {
     this.StartCoroutine(this.ConsumeOxygen());
   }
 
-  private void SetOxygen(int amount) {
-    this.MaxSupply = amount;
-    this.Supply = amount;
-    this.OnOxygenSupplyChanged?.Invoke(this.Supply, this.MaxSupply);
+  private void OnDestroy() {
+    _savedSupply = this.Supply;
   }
 
   private IEnumerator RefillOxygen() {
