@@ -36,23 +36,18 @@ public class Player : MonoBehaviour, IPausable {
     PauseManager.Instance.OnUnpaused.AddListener(this.Unpause);
   }
 
-  private void Update() {
-    if (this._isPaused) {
-      return;
-    }
-
-    if (Input.GetKeyDown(KeyCode.E)) {
-      this.Interact();
-    }
-  }
-
   private void FixedUpdate() {
     if (this._isPaused) {
       return;
     }
 
-    this.GatherInput(out Vector2 moveInput);
+    this.GatherInput(out Vector2 moveInput, out bool wasInteractPressed);
+
     this.Move(moveInput);
+    if (wasInteractPressed) {
+      print("Pressed");
+      this.Interact();
+    }
   }
 
   private void OnTriggerEnter2D(Collider2D other) {
@@ -75,8 +70,9 @@ public class Player : MonoBehaviour, IPausable {
     this._interactable = null;
   }
 
-  private void GatherInput(out Vector2 moveInput) {
+  private void GatherInput(out Vector2 moveInput, out bool wasInteractPressed) {
     moveInput = this._gameInput.Game.Move.ReadValue<Vector2>();
+    wasInteractPressed = this._gameInput.Game.Interact.WasPerformedThisFrame();
   }
 
   private void Move(Vector2 moveInput) {
