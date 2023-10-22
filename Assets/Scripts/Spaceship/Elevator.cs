@@ -1,9 +1,7 @@
 using UnityEngine;
 
 public class Elevator : MonoBehaviour, IInteractable {
-  public void Interact() {
-
-  }
+  public void Interact() {}
 
   public void OnInteractableSelected() {
     AudioManager.Instance.PlayDoorUnlock();
