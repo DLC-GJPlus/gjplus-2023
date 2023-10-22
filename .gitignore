@@ -76,3 +76,7 @@ crashlytics-build.properties
 
 *.DS_Store
 
+
+Assets/Plugins/FMOD/Cache/Editor/FMODStudioCache.asset
+
+Assets/Plugins/FMOD/Cache/Editor/FMODStudioCache.asset.meta
