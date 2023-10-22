@@ -12,13 +12,19 @@ public class ElevatorUI : MonoBehaviour {
   private RectTransform _rectTransform;
 
   private Sequence _tweenSequence;
+  private IEnumerator _teleportCoroutine;
 
   public void Initialize(GameUI gameUI) {
     this._gameUI = gameUI;
   }
 
   public void TeleportToLevel(int index) {
-    this.StartCoroutine(this.TeleportCoroutine(index));
+    this._teleportCoroutine = this.TeleportCoroutine(index);
+    this.StartCoroutine(this._teleportCoroutine);
+  }
+
+  public void Hide() {
+    this.StartCoroutine(this.HideCoroutine());
   }
 
   private void Awake() {
@@ -50,6 +56,15 @@ public class ElevatorUI : MonoBehaviour {
     yield return new WaitForSeconds(0.5f);
 
     this.gameObject.SetActive(false);
-    this._gameUI.FadeOutForeground();
+    this._gameUI.FadeOutForeground(() => this._teleportCoroutine = null);
+  }
+
+  private IEnumerator HideCoroutine() {
+    if (this._teleportCoroutine == null) {
+      this.gameObject.SetActive(false);
+      yield break;
+    }
+
+    yield return new WaitUntil(() => this._teleportCoroutine == null);
   }
 }

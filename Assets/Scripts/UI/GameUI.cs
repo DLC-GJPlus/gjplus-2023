@@ -79,6 +79,8 @@ public class GameUI : MonoBehaviour {
   }
 
   private void HideElevatorUI() {
-    this._elevatorUI.gameObject.SetActive(false);
+    if (this._elevatorUI.gameObject.activeSelf) {
+      this._elevatorUI.Hide();
+    }
   }
 }
