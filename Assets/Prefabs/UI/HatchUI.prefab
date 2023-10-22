@@ -448,4 +448,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _muteClickSound: 1
+  _muteHoverSound: 0
   IsInteractable: 1

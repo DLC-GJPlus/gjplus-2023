@@ -13,8 +13,15 @@ public class ElevatorUI : MonoBehaviour {
 
   private Sequence _tweenSequence;
   private IEnumerator _teleportCoroutine;
+  private const int ExitSpaceshipCode = -1;
 
   public void TeleportToLevel(int index) {
+    if (index == ExitSpaceshipCode) {
+      AudioManager.Instance.PlayTravelWhoosh();
+    } else {
+      AudioManager.Instance.PlayDoorOpen();
+    }
+
     this._teleportCoroutine = this.TeleportCoroutine(index);
     this.StartCoroutine(this._teleportCoroutine);
   }

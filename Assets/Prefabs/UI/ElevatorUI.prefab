@@ -311,9 +311,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97bfeddcf4a04faebc60391e478b0d8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _onClickSound: {fileID: 0}
-  _onHoverSound: {fileID: 0}
-  _muteClickSfx: 0
   _onClick:
     m_PersistentCalls:
       m_Calls:
@@ -329,6 +326,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _muteClickSound: 1
+  _muteHoverSound: 0
   IsInteractable: 1
 --- !u!1 &1488181600423629469
 GameObject:
@@ -574,9 +573,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97bfeddcf4a04faebc60391e478b0d8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _onClickSound: {fileID: 0}
-  _onHoverSound: {fileID: 0}
-  _muteClickSfx: 0
   _onClick:
     m_PersistentCalls:
       m_Calls:
@@ -592,6 +588,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _muteClickSound: 1
+  _muteHoverSound: 0
   IsInteractable: 1
 --- !u!1 &2800098290972893968
 GameObject:
@@ -837,9 +835,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97bfeddcf4a04faebc60391e478b0d8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _onClickSound: {fileID: 0}
-  _onHoverSound: {fileID: 0}
-  _muteClickSfx: 0
   _onClick:
     m_PersistentCalls:
       m_Calls:
@@ -855,6 +850,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _muteClickSound: 1
+  _muteHoverSound: 0
   IsInteractable: 1
 --- !u!1 &4856212906671710728
 GameObject:
@@ -1249,6 +1246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 902a3912d2b14ad3841b164e9c05d0e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gameUI: {fileID: 0}
 --- !u!1 &7795291991711673466
 GameObject:
   m_ObjectHideFlags: 0
@@ -1359,9 +1357,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97bfeddcf4a04faebc60391e478b0d8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _onClickSound: {fileID: 0}
-  _onHoverSound: {fileID: 0}
-  _muteClickSfx: 0
   _onClick:
     m_PersistentCalls:
       m_Calls:
@@ -1377,6 +1372,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _muteClickSound: 1
+  _muteHoverSound: 0
   IsInteractable: 1
 --- !u!1 &8308230419100036889
 GameObject:
@@ -1488,9 +1485,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97bfeddcf4a04faebc60391e478b0d8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _onClickSound: {fileID: 0}
-  _onHoverSound: {fileID: 0}
-  _muteClickSfx: 0
   _onClick:
     m_PersistentCalls:
       m_Calls:
@@ -1506,4 +1500,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _muteClickSound: 1
+  _muteHoverSound: 0
   IsInteractable: 1

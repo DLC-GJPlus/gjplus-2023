@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1508053600852201851}
-  - component: {fileID: 1526920815926438674}
+  - component: {fileID: 7076176083231887103}
   - component: {fileID: 1734943862931380400}
   m_Layer: 0
   m_Name: AudioManager
@@ -33,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1526920815926438674
+--- !u!114 &7076176083231887103
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,15 +42,44 @@ MonoBehaviour:
   m_GameObject: {fileID: 6649720344034978346}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9468c5f457ace64f8d4df6d642b107f, type: 3}
+  m_Script: {fileID: 11500000, guid: cac60c0776374e18841d5242d97e1629, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LoadEvent: 1
-  UnloadEvent: 2
-  Banks:
-  - Music
-  CollisionTag: 
-  PreloadSamples: 0
+  _travelWhooshEvent:
+    Guid:
+      Data1: 1248447679
+      Data2: 1219234989
+      Data3: -1537508988
+      Data4: -306805679
+    Path: event:/Travel Whoosh
+  _doorOpenEvent:
+    Guid:
+      Data1: 159996138
+      Data2: 1244622222
+      Data3: 2099029943
+      Data4: -833428776
+    Path: event:/Door Open
+  _doorUnlockEvent:
+    Guid:
+      Data1: 1240421532
+      Data2: 1285956221
+      Data3: 1627150505
+      Data4: 759354769
+    Path: event:/Door Unlock
+  _mouseEnterEvent:
+    Guid:
+      Data1: -5527286
+      Data2: 1105106540
+      Data3: 2110000268
+      Data4: -1271122924
+    Path: event:/General Select Sound
+  _mouseClickEvent:
+    Guid:
+      Data1: 984658255
+      Data2: 1091749692
+      Data3: -1995246427
+      Data4: -316206974
+    Path: event:/Item Get Gadget
 --- !u!114 &1734943862931380400
 MonoBehaviour:
   m_ObjectHideFlags: 0
