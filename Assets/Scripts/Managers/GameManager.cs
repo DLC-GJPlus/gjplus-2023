@@ -13,7 +13,9 @@ public class GameManager : MonoBehaviour {
   }
 
   private IEnumerator Start() {
-    this._spaceship.Initialize(this._player);
+    if (this._spaceship != null) {
+      this._spaceship.Initialize(this._player);
+    }
 
     // Skip a frame to ensure everything else is set up.
     yield return null;

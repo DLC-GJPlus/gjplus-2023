@@ -6,12 +6,12 @@ using UnityEngine.UI;
 
 public class MainMenuUI : MonoBehaviour {
     [SerializeField] private Image _foreground;
-
-    private const string GameSceneName = "Game";
+    
+    private const string SpaceshipSceneName = "Spaceship";
     private const float TransitionDuration = 0.5f;
 
-    public void LoadGameScene() {
-        this.FadeInForeground(() => SceneManager.LoadScene(GameSceneName));
+    public void LoadSpaceshipScene() {
+        this.FadeInForeground(() => SceneManager.LoadScene(SpaceshipSceneName));
     }
 
     public void Exit() {
