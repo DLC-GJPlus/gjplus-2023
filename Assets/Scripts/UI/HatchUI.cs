@@ -1,10 +1,15 @@
 using DG.Tweening;
-using System;
-using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class ElevatorUI : MonoBehaviour {
+public class HatchUI : MonoBehaviour {
   [SerializeField] private GameUI _gameUI;
+
+  private const string SpaceshipScene = "Spaceship";
+
+  public void LoadSpaceshipScene() {
+    this._gameUI.FadeInForeground(() => SceneManager.LoadScene(SpaceshipScene));
+  }
 
   private const float ScaleUpValue = 1.1f;
   private const float ScaleDownValue = 0.9f;
@@ -12,16 +17,6 @@ public class ElevatorUI : MonoBehaviour {
   private RectTransform _rectTransform;
 
   private Sequence _tweenSequence;
-  private IEnumerator _teleportCoroutine;
-
-  public void TeleportToLevel(int index) {
-    this._teleportCoroutine = this.TeleportCoroutine(index);
-    this.StartCoroutine(this._teleportCoroutine);
-  }
-
-  public void Hide() {
-    this.StartCoroutine(this.HideCoroutine());
-  }
 
   private void Awake() {
     this._rectTransform = this.GetComponent<RectTransform>();
@@ -41,26 +36,5 @@ public class ElevatorUI : MonoBehaviour {
     this._tweenSequence.OnComplete(() => this._tweenSequence = null);
     this._tweenSequence.SetEase(Ease.InOutSine);
     this._tweenSequence.Play();
-  }
-
-  private IEnumerator TeleportCoroutine(int index) {
-    bool finishedFadingIn = false;
-    this._gameUI.FadeInForeground(() => finishedFadingIn = true);
-
-    yield return new WaitUntil(() => finishedFadingIn);
-    EventManager.Instance.OnTeleportPlayerEvent?.Invoke(new OnTeleportPlayerData {TeleportSpawnIndex = index});
-    yield return new WaitForSeconds(0.5f);
-
-    this.gameObject.SetActive(false);
-    this._gameUI.FadeOutForeground(() => this._teleportCoroutine = null);
-  }
-
-  private IEnumerator HideCoroutine() {
-    if (this._teleportCoroutine == null) {
-      this.gameObject.SetActive(false);
-      yield break;
-    }
-
-    yield return new WaitUntil(() => this._teleportCoroutine == null);
   }
 }
