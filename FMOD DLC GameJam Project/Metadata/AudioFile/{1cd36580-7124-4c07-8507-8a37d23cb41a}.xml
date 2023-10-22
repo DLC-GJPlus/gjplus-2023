@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
-	<object class="AudioFile" id="{55fba587-82d9-4846-82ee-856e9c51da6b}">
+	<object class="AudioFile" id="{1cd36580-7124-4c07-8507-8a37d23cb41a}">
 		<property name="assetPath">
-			<value>SFX/65.mp3</value>
+			<value>SFX/Fantasy_UI (40).wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>
 		</property>
 		<property name="channelCount">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<property name="length">
-			<value>0.70530612244897961</value>
+			<value>6.0017233560090704</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{43bb3bb6-a8ea-4d69-ae36-71108df2e3a5}</destination>
