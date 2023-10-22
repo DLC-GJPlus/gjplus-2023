@@ -1,6 +1,60 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7240689369797839571
+--- !u!114 &-5936678520570767700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Item Get Gadget
+  m_EditorClassIdentifier: 
+  Path: event:/Item Get Gadget
+  Guid:
+    Data1: 984658255
+    Data2: 1091749692
+    Data3: -1995246427
+    Data4: -316206974
+  Banks:
+  - {fileID: -3231875690888789786}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1968
+--- !u!114 &-3846612338129399715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Radar Test
+  m_EditorClassIdentifier: 
+  Path: event:/Radar Test
+  Guid:
+    Data1: 998579800
+    Data2: 1092236718
+    Data3: 2072874387
+    Data4: 1509465670
+  Banks:
+  - {fileID: -3231875690888789786}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 4010
+--- !u!114 &-3231875690888789786
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,17 +64,107 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Music.bank
+  m_Name: bank:/SFX.bank
   m_EditorClassIdentifier: 
-  Path: FMOD DLC GameJam Project/Build/Desktop/Music.bank
-  Name: Music
-  StudioPath: bank:/Music
-  lastModified: 638335225251685224
+  Path: FMOD DLC GameJam Project/Build/Desktop/SFX.bank
+  Name: SFX
+  StudioPath: bank:/SFX
+  lastModified: 638335328097523880
   FileSizes:
   - Name: Desktop
-    Value: 2090976
+    Value: 582080
   Exists: 1
---- !u!114 &-5996671606279982220
+--- !u!114 &-2544945155785826505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Zipper Close
+  m_EditorClassIdentifier: 
+  Path: event:/Zipper Close
+  Guid:
+    Data1: -998944590
+    Data2: 1178283088
+    Data3: -19648630
+    Data4: -286915586
+  Banks:
+  - {fileID: -3231875690888789786}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 750
+--- !u!114 &-509656629889562912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Door Unlock
+  m_EditorClassIdentifier: 
+  Path: event:/Door Unlock
+  Guid:
+    Data1: 1240421532
+    Data2: 1285956221
+    Data3: 1627150505
+    Data4: 759354769
+  Banks:
+  - {fileID: -3231875690888789786}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1974
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  EditorBanks:
+  - {fileID: 2910550614310853355}
+  - {fileID: 3384810640295119843}
+  - {fileID: 3142409616061308606}
+  - {fileID: 5568164841318256858}
+  - {fileID: -3231875690888789786}
+  EditorEvents:
+  - {fileID: 5333888365649384207}
+  - {fileID: 8887767253387819125}
+  - {fileID: 4183168492263286822}
+  - {fileID: -5936678520570767700}
+  - {fileID: -3846612338129399715}
+  - {fileID: -509656629889562912}
+  - {fileID: -2544945155785826505}
+  - {fileID: 3653327800157694779}
+  - {fileID: 4177337250665832448}
+  - {fileID: 8593452053293739507}
+  EditorParameters: []
+  MasterBanks:
+  - {fileID: 3142409616061308606}
+  StringsBanks:
+  - {fileID: 2910550614310853355}
+  cacheTime: 638335328097523880
+  cacheVersion: 131608
+--- !u!114 &2910550614310853355
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -35,12 +179,32 @@ MonoBehaviour:
   Path: FMOD DLC GameJam Project/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638335225225960909
+  lastModified: 638335328097508470
   FileSizes:
   - Name: Desktop
-    Value: 896
+    Value: 1318
   Exists: 1
---- !u!114 &-3798193616558709327
+--- !u!114 &3142409616061308606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD DLC GameJam Project/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 638335328097507802
+  FileSizes:
+  - Name: Desktop
+    Value: 1036
+  Exists: 1
+--- !u!114 &3384810640295119843
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -55,12 +219,93 @@ MonoBehaviour:
   Path: FMOD DLC GameJam Project/Build/Desktop/Ambient.bank
   Name: Ambient
   StudioPath: bank:/Ambient
-  lastModified: 638335225225920623
+  lastModified: 638335328097507291
   FileSizes:
   - Name: Desktop
     Value: 494
   Exists: 1
---- !u!114 &-731181883660723535
+--- !u!114 &3653327800157694779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Travel Whoosh
+  m_EditorClassIdentifier: 
+  Path: event:/Travel Whoosh
+  Guid:
+    Data1: 1248447679
+    Data2: 1219234989
+    Data3: -1537508988
+    Data4: -306805679
+  Banks:
+  - {fileID: -3231875690888789786}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3112
+--- !u!114 &4177337250665832448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Zipper Open
+  m_EditorClassIdentifier: 
+  Path: event:/Zipper Open
+  Guid:
+    Data1: 854800839
+    Data2: 1299099795
+    Data3: -1228415827
+    Data4: 1174000545
+  Banks:
+  - {fileID: -3231875690888789786}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 710
+--- !u!114 &4183168492263286822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Item Get Scraps
+  m_EditorClassIdentifier: 
+  Path: event:/Item Get Scraps
+  Guid:
+    Data1: 1623198486
+    Data2: 1091121520
+    Data3: -2075209837
+    Data4: 913503023
+  Banks:
+  - {fileID: -3231875690888789786}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2375
+--- !u!114 &5333888365649384207
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -79,7 +324,7 @@ MonoBehaviour:
     Data3: 955415974
     Data4: -190045486
   Banks:
-  - {fileID: -7240689369797839571}
+  - {fileID: 5568164841318256858}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -87,34 +332,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 151724
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
-  m_Name: FMODStudioCache
-  m_EditorClassIdentifier: 
-  EditorBanks:
-  - {fileID: -5996671606279982220}
-  - {fileID: -3798193616558709327}
-  - {fileID: 279054502767054719}
-  - {fileID: -7240689369797839571}
-  - {fileID: 6516583407590356648}
-  EditorEvents:
-  - {fileID: -731181883660723535}
-  EditorParameters: []
-  MasterBanks:
-  - {fileID: 279054502767054719}
-  StringsBanks:
-  - {fileID: -5996671606279982220}
-  cacheTime: 638335225251701024
-  cacheVersion: 131603
---- !u!114 &279054502767054719
+--- !u!114 &5568164841318256858
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,17 +342,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
+  m_Name: bank:/Music.bank
   m_EditorClassIdentifier: 
-  Path: FMOD DLC GameJam Project/Build/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 638335225225950768
+  Path: FMOD DLC GameJam Project/Build/Desktop/Music.bank
+  Name: Music
+  StudioPath: bank:/Music
+  lastModified: 638335328097519807
   FileSizes:
   - Name: Desktop
-    Value: 1036
+    Value: 2090976
   Exists: 1
---- !u!114 &6516583407590356648
+--- !u!114 &8593452053293739507
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,14 +361,48 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/SFX.bank
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Door Open
   m_EditorClassIdentifier: 
-  Path: FMOD DLC GameJam Project/Build/Desktop/SFX.bank
-  Name: SFX
-  StudioPath: bank:/SFX
-  lastModified: 638335225251701024
-  FileSizes:
-  - Name: Desktop
-    Value: 494
-  Exists: 1
+  Path: event:/Door Open
+  Guid:
+    Data1: 159996138
+    Data2: 1244622222
+    Data3: 2099029943
+    Data4: -833428776
+  Banks:
+  - {fileID: -3231875690888789786}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1375
+--- !u!114 &8887767253387819125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/General Select Sound
+  m_EditorClassIdentifier: 
+  Path: event:/General Select Sound
+  Guid:
+    Data1: -5527286
+    Data2: 1105106540
+    Data3: 2110000268
+    Data4: -1271122924
+  Banks:
+  - {fileID: -3231875690888789786}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1500
