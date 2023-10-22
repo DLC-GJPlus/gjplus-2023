@@ -1,4 +1,5 @@
 using Cinemachine;
+using DG.Tweening;
 using UnityEngine;
 
 public class Player : MonoBehaviour, IPausable {
@@ -9,6 +10,7 @@ public class Player : MonoBehaviour, IPausable {
   // References
   private GameInput _gameInput;
   private Rigidbody2D _rigidbody2D;
+  private SpriteRenderer _spriteRenderer;
 
   private bool _isPaused;
   private IInteractable _interactable;
@@ -32,9 +34,12 @@ public class Player : MonoBehaviour, IPausable {
 
     this._rigidbody2D = this.GetComponent<Rigidbody2D>();
     this.OxygenTank = this.GetComponent<OxygenTank>();
+    this._spriteRenderer = this.GetComponent<SpriteRenderer>();
   }
 
   private void Start() {
+    this.OxygenTank.OnOutOfOxygen.AddListener(this.Die);
+
     PauseManager.Instance.OnPaused.AddListener(this.Pause);
     PauseManager.Instance.OnUnpaused.AddListener(this.Unpause);
   }
@@ -70,6 +75,15 @@ public class Player : MonoBehaviour, IPausable {
 
     this._interactable.OnInteractableDeselected();
     this._interactable = null;
+  }
+
+  private void Die() {
+    this._gameInput.Disable();
+    this._spriteRenderer
+      .DOColor(Color.black, 0.5f)
+      .SetEase(Ease.InOutCubic);
+
+    print("Died");
   }
 
   private void GatherInput(out Vector2 moveInput, out bool wasInteractPressed) {

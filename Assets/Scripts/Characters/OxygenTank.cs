@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -8,7 +9,7 @@ public class OxygenTank : MonoBehaviour {
   public int ConsumptionRate { get; private set; }
 
   public UnityEvent<int, int> OnOxygenSupplyChanged { get; private set; }
-  public UnityEvent OnOxygenLow { get; private set; }
+  public UnityEvent<bool> OnOxygenLow { get; private set; }
   public UnityEvent OnOutOfOxygen { get; private set; }
 
   private IEnumerator _consumeCoroutine;
@@ -17,6 +18,8 @@ public class OxygenTank : MonoBehaviour {
   private const int LowThreshold = 20;
 
   private static int _savedSupply = -1;
+
+  private bool _wasLowOxygenTriggered;
 
   public void StartRefillOxygen() {
     this._refillCoroutine = this.RefillOxygen();
@@ -28,7 +31,7 @@ public class OxygenTank : MonoBehaviour {
     this.MaxSupply = 100;
     this.ConsumptionRate = 1;
 
-    this.OnOxygenLow = new UnityEvent();
+    this.OnOxygenLow = new UnityEvent<bool>();
     this.OnOutOfOxygen = new UnityEvent();
     this.OnOxygenSupplyChanged = new UnityEvent<int, int>();
   }
@@ -36,6 +39,12 @@ public class OxygenTank : MonoBehaviour {
   private void Start() {
     this.OnOxygenSupplyChanged?.Invoke(this.Supply, this.MaxSupply);
     this.StartCoroutine(this.ConsumeOxygen());
+  }
+
+  private void Update() {
+    if (Input.GetKeyDown(KeyCode.R)) {
+      this.StartRefillOxygen();
+    }
   }
 
   private void OnDestroy() {
@@ -46,6 +55,12 @@ public class OxygenTank : MonoBehaviour {
     while (this.Supply < this.MaxSupply) {
       this.Supply++;
       this.OnOxygenSupplyChanged?.Invoke(this.Supply, this.MaxSupply);
+
+      if (this.Supply > LowThreshold) {
+        this._wasLowOxygenTriggered = false;
+        this.OnOxygenLow?.Invoke(false);
+      }
+
       yield return null;
     }
   }
@@ -57,8 +72,9 @@ public class OxygenTank : MonoBehaviour {
       this.Supply -= this.ConsumptionRate;
       this.OnOxygenSupplyChanged?.Invoke(this.Supply, this.MaxSupply);
 
-      if (this.Supply <= LowThreshold) {
-        this.OnOxygenLow?.Invoke();
+      if (this.Supply <= LowThreshold && !this._wasLowOxygenTriggered) {
+        this.OnOxygenLow?.Invoke(true);
+        this._wasLowOxygenTriggered = true;
       }
     }
 
