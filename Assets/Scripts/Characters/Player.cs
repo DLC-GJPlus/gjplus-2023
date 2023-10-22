@@ -45,7 +45,6 @@ public class Player : MonoBehaviour, IPausable {
 
     this.Move(moveInput);
     if (wasInteractPressed) {
-      print("Pressed");
       this.Interact();
     }
   }
