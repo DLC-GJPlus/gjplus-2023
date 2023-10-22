@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7588941911302547406}
   - component: {fileID: 3056790027256605925}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 3858825389528185673}
   - component: {fileID: 1911158776117834164}
   - component: {fileID: 2488253255761961920}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,7 +197,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!61 &1911158776117834164
 BoxCollider2D:

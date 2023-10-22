@@ -11,5 +11,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game.unity
     guid: 90afc84707fe9468292f8c054d513b88
+  - enabled: 1
+    path: Assets/Scenes/Spaceship.unity
+    guid: 6ae0d1464899b49bfa4eca9ed7cb3058
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: a1f6793396c9940889308180bed0c8a2, type: 2}
