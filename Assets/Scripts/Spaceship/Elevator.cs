@@ -6,6 +6,7 @@ public class Elevator : MonoBehaviour, IInteractable {
   }
 
   public void OnInteractableSelected() {
+    AudioManager.Instance.PlayDoorUnlock();
     EventManager.Instance.OnShowElevatorUIEvent?.Invoke();
   }
 

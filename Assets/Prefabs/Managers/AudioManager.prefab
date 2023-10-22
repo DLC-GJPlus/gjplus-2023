@@ -45,6 +45,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cac60c0776374e18841d5242d97e1629, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _travelWhooshEvent:
+    Guid:
+      Data1: 1248447679
+      Data2: 1219234989
+      Data3: -1537508988
+      Data4: -306805679
+    Path: event:/Travel Whoosh
+  _doorOpenEvent:
+    Guid:
+      Data1: 159996138
+      Data2: 1244622222
+      Data3: 2099029943
+      Data4: -833428776
+    Path: event:/Door Open
+  _doorUnlockEvent:
+    Guid:
+      Data1: 1240421532
+      Data2: 1285956221
+      Data3: 1627150505
+      Data4: 759354769
+    Path: event:/Door Unlock
   _mouseEnterEvent:
     Guid:
       Data1: -5527286

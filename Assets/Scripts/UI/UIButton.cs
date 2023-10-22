@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class UIButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler {
   [SerializeField] private UnityEvent _onClick;
+  [SerializeField] private bool _muteClickSound;
+  [SerializeField] private bool _muteHoverSound;
 
   public bool IsInteractable = true;
 
@@ -26,7 +28,10 @@ public class UIButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
       return;
     }
 
-    AudioManager.Instance.OnMouseClickUI();
+    if (!this._muteClickSound) {
+      AudioManager.Instance.PlayOnMouseClickUI();
+    }
+    
     this.DoFadeAnimation(() => {
       this._onClick?.Invoke();
     });
@@ -37,7 +42,10 @@ public class UIButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
       return;
     }
 
-    AudioManager.Instance.OnMouseEnterUI();
+    if (!this._muteHoverSound) {
+      AudioManager.Instance.PlayOnMouseEnterUI();
+    }
+
     this.DoBounceAnimation();
   }
 
