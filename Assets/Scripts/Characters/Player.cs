@@ -57,16 +57,22 @@ public class Player : MonoBehaviour, IPausable {
 
   private void OnTriggerEnter2D(Collider2D other) {
     IInteractable interactable = other.GetComponent<IInteractable>();
-    if (interactable != null) {
-      this._interactable = interactable;
+    if (interactable == null) {
+      return;
     }
+
+    interactable.OnInteractableSelected();
+    this._interactable = interactable;
   }
 
   private void OnTriggerExit2D(Collider2D other) {
     IInteractable interactable = other.GetComponent<IInteractable>();
-    if (interactable != null) {
-      this._interactable = null;
+    if (interactable == null) {
+      return;
     }
+
+    this._interactable.OnInteractableDeselected();
+    this._interactable = null;
   }
 
   private void GatherInput(out Vector2 moveInput) {

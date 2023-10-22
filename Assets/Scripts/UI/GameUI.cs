@@ -63,6 +63,7 @@ public class GameUI : MonoBehaviour {
     this._pauseManager.OnUnpaused.AddListener(this.HidePauseUI);
 
     EventManager.Instance.OnShowElevatorUIEvent.AddListener(this.ShowElevatorUI);
+    EventManager.Instance.OnHideElevatorUIEvent.AddListener(this.HideElevatorUI);
   }
 
   private void ShowPauseUI() {
@@ -75,5 +76,9 @@ public class GameUI : MonoBehaviour {
 
   private void ShowElevatorUI() {
     this._elevatorUI.gameObject.SetActive(true);
+  }
+
+  private void HideElevatorUI() {
+    this._elevatorUI.gameObject.SetActive(false);
   }
 }
