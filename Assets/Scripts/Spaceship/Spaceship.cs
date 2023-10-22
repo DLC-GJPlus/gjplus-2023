@@ -6,23 +6,24 @@ public class Spaceship : MonoBehaviour {
 
   private Player _player;
 
+  private const int ExitSpaceshipCode = -1;
+
   public void Initialize(Player player) {
     this._player = player;
   }
 
-  private void Update() {
-    if (Input.GetKeyDown(KeyCode.Alpha1)) {
-      this.MoveToLevel(0);
-    } else if (Input.GetKeyDown(KeyCode.Alpha2)) {
-      this.MoveToLevel(1);
-    } else if (Input.GetKeyDown(KeyCode.Alpha3)) {
-      this.MoveToLevel(2);
-    } else if (Input.GetKeyDown(KeyCode.Alpha4)) {
-      this.MoveToLevel(3);
-    }
+  private void Start() {
+    EventManager.Instance.OnTeleportPlayerEvent.AddListener(this.MoveToLevel);
   }
 
-  private void MoveToLevel(int index) {
+  private void MoveToLevel(OnTeleportPlayerData data) {
+    int index = data.TeleportSpawnIndex;
+    if (index == ExitSpaceshipCode) {
+      // Load Scene level
+      print("Exiting spaceship");
+      return;
+    }
+
     this._player.Teleport(this._levelSpawnTransforms[index].position);
   }
 }

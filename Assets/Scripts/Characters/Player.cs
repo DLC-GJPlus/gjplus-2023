@@ -1,3 +1,4 @@
+using Cinemachine;
 using UnityEngine;
 
 public class Player : MonoBehaviour, IPausable {
@@ -12,6 +13,7 @@ public class Player : MonoBehaviour, IPausable {
 
   public void Teleport(Vector3 position) {
     this._rigidbody2D.MovePosition(position);
+    CinemachineCore.Instance.OnTargetObjectWarped(this.transform, position - this.transform.position);
   }
 
   public void Pause() {
