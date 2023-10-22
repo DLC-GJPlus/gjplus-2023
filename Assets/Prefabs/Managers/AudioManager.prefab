@@ -45,6 +45,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cac60c0776374e18841d5242d97e1629, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _mouseEnterEvent:
+    Guid:
+      Data1: -5527286
+      Data2: 1105106540
+      Data3: 2110000268
+      Data4: -1271122924
+    Path: event:/General Select Sound
+  _mouseClickEvent:
+    Guid:
+      Data1: 1240421532
+      Data2: 1285956221
+      Data3: 1627150505
+      Data4: 759354769
+    Path: event:/Door Unlock
 --- !u!114 &1734943862931380400
 MonoBehaviour:
   m_ObjectHideFlags: 0

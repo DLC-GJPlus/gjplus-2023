@@ -1,4 +1,5 @@
 using DG.Tweening;
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -20,6 +21,7 @@ public class UIButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
       return;
     }
 
+    AudioManager.Instance.OnMouseClickUI();
     this.DoBounceAnimation(() => {
       this._onClick?.Invoke();
     });
@@ -30,6 +32,7 @@ public class UIButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
       return;
     }
 
+    AudioManager.Instance.OnMouseEnterUI();
     this.DoBounceAnimation();
   }
 
