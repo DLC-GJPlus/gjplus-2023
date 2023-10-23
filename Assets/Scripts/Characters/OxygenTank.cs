@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class OxygenTank : MonoBehaviour {
+public class OxygenTank : MonoBehaviour, IPausable {
   public int MaxSupply { get; private set; }
   public int Supply { get; private set; }
   public int ConsumptionRate { get; private set; }
@@ -19,6 +19,15 @@ public class OxygenTank : MonoBehaviour {
   private static int _savedSupply = -1;
 
   private bool _wasLowOxygenTriggered;
+  private bool _isPaused;
+
+  public void Pause() {
+    this._isPaused = true;
+  }
+
+  public void Unpause() {
+    this._isPaused = false;
+  }
 
   public void StartOxygenRefill() {
     AudioManager.Instance.PlayOxygenRefill();
@@ -48,6 +57,10 @@ public class OxygenTank : MonoBehaviour {
 
   private void Start() {
     this.OnOxygenSupplyChanged?.Invoke(this.Supply, this.MaxSupply);
+
+    PauseManager.Instance.OnPaused.AddListener(this.Pause);
+    PauseManager.Instance.OnUnpaused.AddListener(this.Unpause);
+
     this.StartCoroutine(this.ConsumeOxygen());
   }
 
@@ -57,6 +70,10 @@ public class OxygenTank : MonoBehaviour {
 
   private IEnumerator RefillOxygen() {
     while (this.Supply < this.MaxSupply) {
+      if (this._isPaused) {
+        yield return new WaitWhile(() => this._isPaused);
+      }
+
       this.Supply++;
       this.OnOxygenSupplyChanged?.Invoke(this.Supply, this.MaxSupply);
 
@@ -74,6 +91,10 @@ public class OxygenTank : MonoBehaviour {
 
   private IEnumerator ConsumeOxygen() {
     while (this.Supply > 0) {
+      if (this._isPaused) {
+        yield return new WaitWhile(() => this._isPaused);
+      }
+
       yield return new WaitForSeconds(1f);
 
       this.Supply -= this.ConsumptionRate;
