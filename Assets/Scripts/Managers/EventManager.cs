@@ -8,6 +8,9 @@ public class EventManager {
   public readonly OnShowHatchUIEvent OnShowHatchUIEvent;
   public readonly OnHideHatchUIEvent OnHideHatchUIEvent;
 
+  public readonly OnShowOxygenSwitchUIEvent OnShowOxygenSwitchUIEvent;
+  public readonly OnHideOxygenSwitchUIEvent OnHideOxygenSwitchUIEvent;
+
   public readonly OnTeleportPlayerEvent OnTeleportPlayerEvent;
 
   private EventManager() {
@@ -16,6 +19,9 @@ public class EventManager {
 
     this.OnShowHatchUIEvent = new OnShowHatchUIEvent();
     this.OnHideHatchUIEvent = new OnHideHatchUIEvent();
+
+    this.OnShowOxygenSwitchUIEvent = new OnShowOxygenSwitchUIEvent();
+    this.OnHideOxygenSwitchUIEvent = new OnHideOxygenSwitchUIEvent();
 
     this.OnTeleportPlayerEvent = new OnTeleportPlayerEvent();
   }

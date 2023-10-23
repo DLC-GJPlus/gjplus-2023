@@ -15,6 +15,7 @@ public class GameUI : MonoBehaviour {
   [SerializeField] private ElevatorUI _elevatorUI;
   [SerializeField] private GameObject _hatchUI;
   [SerializeField] private OxygenUI _oxygenUI;
+  [SerializeField] private OxygenSwitchUI _oxygenSwitchUI;
 
   private const string MainMenuSceneName = "MainMenu";
   private const float TransitionDuration = 0.5f;
@@ -69,6 +70,9 @@ public class GameUI : MonoBehaviour {
 
     EventManager.Instance.OnShowHatchUIEvent.AddListener(this.ShowHatchUI);
     EventManager.Instance.OnHideHatchUIEvent.AddListener(this.HideHatchUI);
+
+    EventManager.Instance.OnShowOxygenSwitchUIEvent.AddListener(this.ShowOxygenSwitchUI);
+    EventManager.Instance.OnHideOxygenSwitchUIEvent.AddListener(this.HideOxygenSwitchUI);
   }
 
   private void ShowPauseUI() {
@@ -95,5 +99,14 @@ public class GameUI : MonoBehaviour {
 
   private void HideHatchUI() {
     this._hatchUI.gameObject.SetActive(false);
+  }
+
+  private void ShowOxygenSwitchUI(OnShowOxygenSwitchData data) {
+    this._oxygenSwitchUI.gameObject.SetActive(true);
+    this._oxygenSwitchUI.Show(data);
+  }
+
+  private void HideOxygenSwitchUI() {
+    this._oxygenSwitchUI.gameObject.SetActive(false);
   }
 }
