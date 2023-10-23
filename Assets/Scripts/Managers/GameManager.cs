@@ -68,9 +68,11 @@ public class GameManager : Singleton<GameManager> {
   }
 
   private void StartCheckpoint() {
+    if (this._currentCheckpoint == null) {
+      return;
+    }
+
     this._currentCheckpoint.OnStart();
     this.Player.Teleport(this._currentCheckpoint.GetPlayerSpawnPoint());
-
-
   }
 }
