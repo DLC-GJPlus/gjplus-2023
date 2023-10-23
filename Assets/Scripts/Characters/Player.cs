@@ -13,6 +13,7 @@ public class Player : MonoBehaviour, IPausable {
   private GameInput _gameInput;
   private Rigidbody2D _rigidbody2D;
   private SpriteRenderer _spriteRenderer;
+  private Animator _animator;
 
   private bool _isPaused;
   private IInteractable _interactable;
@@ -37,6 +38,7 @@ public class Player : MonoBehaviour, IPausable {
     this._rigidbody2D = this.GetComponent<Rigidbody2D>();
     this.OxygenTank = this.GetComponent<OxygenTank>();
     this._spriteRenderer = this.GetComponent<SpriteRenderer>();
+    this._animator = this.GetComponent<Animator>();
 
     this.OnPlayerDied = new UnityEvent();
   }
@@ -54,6 +56,15 @@ public class Player : MonoBehaviour, IPausable {
     }
 
     this.GatherInput(out Vector2 moveInput, out bool wasInteractPressed);
+
+    this._animator.SetFloat("x", moveInput.x);
+    this._animator.SetFloat("y", moveInput.y);
+
+    if (moveInput.magnitude > 0.15f) {
+      this._animator.SetTrigger("Walk");
+    } else if (moveInput.magnitude < 0.1f) {
+      this._animator.SetTrigger("Idle");
+    }
 
     this.Move(moveInput);
     if (wasInteractPressed) {
