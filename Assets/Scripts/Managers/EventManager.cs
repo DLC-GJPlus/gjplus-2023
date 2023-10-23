@@ -13,6 +13,8 @@ public class EventManager {
 
   public readonly OnTeleportPlayerEvent OnTeleportPlayerEvent;
 
+  public readonly EnableOxygenStationsEvent EnableOxygenStationsEvent;
+
   private EventManager() {
     this.OnShowElevatorUIEvent = new OnShowElevatorUIEvent();
     this.OnHideElevatorUIEvent = new OnHideElevatorUIEvent();
@@ -24,5 +26,7 @@ public class EventManager {
     this.OnHideOxygenSwitchUIEvent = new OnHideOxygenSwitchUIEvent();
 
     this.OnTeleportPlayerEvent = new OnTeleportPlayerEvent();
+
+    this.EnableOxygenStationsEvent = new EnableOxygenStationsEvent();
   }
 }

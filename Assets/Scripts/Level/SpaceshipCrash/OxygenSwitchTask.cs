@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class OxygenSwitchTask : MonoBehaviour, ITask, IInteractable {
-  private bool _isCompleted = false;
+  private bool _isCompleted;
   private UnityAction<ITask> _onCompleted;
 
   public bool IsCompleted() => this._isCompleted;
@@ -12,6 +12,7 @@ public class OxygenSwitchTask : MonoBehaviour, ITask, IInteractable {
   }
 
   public void Interact() {
+    EventManager.Instance.EnableOxygenStationsEvent?.Invoke();
     this.CompleteTask();
     EventManager.Instance.OnHideOxygenSwitchUIEvent?.Invoke();
   }
