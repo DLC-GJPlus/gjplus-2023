@@ -30,6 +30,10 @@ public class OxygenTank : MonoBehaviour, IPausable {
   }
 
   public void StartOxygenRefill() {
+    EventManager.Instance.OnShowMessageUIEvent?.Invoke(new OnShowMessageData() {
+      Message = "Amazing! Now with that resolved I can figure out where I crash landed and where did my friends disappeared. Maybe I can rescue some of them."
+    });
+
     AudioManager.Instance.PlayOxygenRefill();
     this._refillCoroutine = this.RefillOxygen();
     this.StartCoroutine(this._refillCoroutine);
@@ -46,7 +50,7 @@ public class OxygenTank : MonoBehaviour, IPausable {
   }
 
   private void Awake() {
-    this.Supply = _savedSupply == -1 ? 30 : _savedSupply;
+    this.Supply = _savedSupply == -1 ? 45 : _savedSupply;
     this.MaxSupply = 100;
     this.ConsumptionRate = 1;
 

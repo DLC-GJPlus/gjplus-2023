@@ -2,6 +2,7 @@ public class EventManager {
   public static EventManager Instance => _instance ??= new EventManager();
   private static EventManager _instance;
 
+  // UI Events
   public readonly OnShowElevatorUIEvent OnShowElevatorUIEvent;
   public readonly OnHideElevatorUIEvent OnHideElevatorUIEvent;
 
@@ -11,6 +12,10 @@ public class EventManager {
   public readonly OnShowOxygenSwitchUIEvent OnShowOxygenSwitchUIEvent;
   public readonly OnHideOxygenSwitchUIEvent OnHideOxygenSwitchUIEvent;
 
+  public readonly OnShowMessageUIEvent OnShowMessageUIEvent;
+  public readonly OnHideMessageUIEvent OnHideMessageUIEvent;
+
+  // Game Events
   public readonly OnTeleportPlayerEvent OnTeleportPlayerEvent;
 
   public readonly EnableOxygenStationsEvent EnableOxygenStationsEvent;
@@ -24,6 +29,9 @@ public class EventManager {
 
     this.OnShowOxygenSwitchUIEvent = new OnShowOxygenSwitchUIEvent();
     this.OnHideOxygenSwitchUIEvent = new OnHideOxygenSwitchUIEvent();
+
+    this.OnShowMessageUIEvent = new OnShowMessageUIEvent();
+    this.OnHideMessageUIEvent = new OnHideMessageUIEvent();
 
     this.OnTeleportPlayerEvent = new OnTeleportPlayerEvent();
 

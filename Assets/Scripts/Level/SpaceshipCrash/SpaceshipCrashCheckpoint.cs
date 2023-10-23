@@ -14,7 +14,9 @@ public class SpaceshipCrashCheckpoint : ICheckpoint {
   }
 
   public void OnStart() {
-    Debug.Log("Starting checkpoint!");
+    EventManager.Instance.OnShowMessageUIEvent?.Invoke(new OnShowMessageData() {
+      Message = "Oh no, the spaceship crashed. How am I going to find my friends?\nOxygen is running low. I need to check the oxygen generators in the cockpit Level.\nElevator should be helpful"
+    });
   }
 
   public Vector3 GetPlayerSpawnPoint() => new Vector3(-6.5f, 1, 0);

@@ -54,6 +54,10 @@ public class GameManager : Singleton<GameManager> {
       return;
     }
 
+    EventManager.Instance.OnShowMessageUIEvent?.Invoke(new OnShowMessageData() {
+      Message = "Great, now all O2 stations are operational. I can refill my oxygen tank there."
+    });
+
     CheckpointType nextCheckpoint = this._currentCheckpoint.GetNextCheckpoint();
     if (nextCheckpoint == CheckpointType.None) {
       return;

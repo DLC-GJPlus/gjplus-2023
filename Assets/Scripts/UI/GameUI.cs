@@ -14,6 +14,7 @@ public class GameUI : MonoBehaviour {
   [SerializeField] private GameObject _pauseUI;
   [SerializeField] private ElevatorUI _elevatorUI;
   [SerializeField] private GameObject _hatchUI;
+  [SerializeField] private MessageUI _messageUI;
   [SerializeField] private OxygenUI _oxygenUI;
   [SerializeField] private OxygenSwitchUI _oxygenSwitchUI;
 
@@ -65,6 +66,9 @@ public class GameUI : MonoBehaviour {
     this._pauseManager.OnPaused.AddListener(this.ShowPauseUI);
     this._pauseManager.OnUnpaused.AddListener(this.HidePauseUI);
 
+    EventManager.Instance.OnShowMessageUIEvent.AddListener(this.ShowMessageUI);
+    EventManager.Instance.OnHideMessageUIEvent.AddListener(this.HideMessageUI);
+
     EventManager.Instance.OnShowElevatorUIEvent.AddListener(this.ShowElevatorUI);
     EventManager.Instance.OnHideElevatorUIEvent.AddListener(this.HideElevatorUI);
 
@@ -73,6 +77,15 @@ public class GameUI : MonoBehaviour {
 
     EventManager.Instance.OnShowOxygenSwitchUIEvent.AddListener(this.ShowOxygenSwitchUI);
     EventManager.Instance.OnHideOxygenSwitchUIEvent.AddListener(this.HideOxygenSwitchUI);
+  }
+
+  private void ShowMessageUI(OnShowMessageData data) {
+    this._messageUI.gameObject.SetActive(true);
+    this._messageUI.ShowMessage(data.Message);
+  }
+
+  private void HideMessageUI() {
+    this._messageUI.gameObject.SetActive(false);
   }
 
   private void ShowPauseUI() {
