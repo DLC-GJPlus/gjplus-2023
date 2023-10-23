@@ -21,6 +21,7 @@ public class OxygenTank : MonoBehaviour {
   private bool _wasLowOxygenTriggered;
 
   public void StartOxygenRefill() {
+    AudioManager.Instance.PlayOxygenRefill();
     this._refillCoroutine = this.RefillOxygen();
     this.StartCoroutine(this._refillCoroutine);
   }
@@ -30,6 +31,7 @@ public class OxygenTank : MonoBehaviour {
       return;
     }
 
+    AudioManager.Instance.StopOxygenRefill();
     this.StopCoroutine(this._refillCoroutine);
     this._refillCoroutine = null;
   }
@@ -61,9 +63,10 @@ public class OxygenTank : MonoBehaviour {
       if (this.Supply > LowThreshold) {
         this._wasLowOxygenTriggered = false;
         this.OnOxygenLow?.Invoke(false);
+        AudioManager.Instance.StopOxygenWarning();
       }
 
-      yield return null;
+      yield return new WaitForSeconds(0.05f);
     }
 
     this._refillCoroutine = null;
@@ -79,6 +82,7 @@ public class OxygenTank : MonoBehaviour {
       if (this.Supply <= LowThreshold && !this._wasLowOxygenTriggered) {
         this.OnOxygenLow?.Invoke(true);
         this._wasLowOxygenTriggered = true;
+        AudioManager.Instance.PlayOxygenWarning();
       }
     }
 

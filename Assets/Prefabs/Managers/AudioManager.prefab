@@ -66,6 +66,27 @@ MonoBehaviour:
       Data3: 1627150505
       Data4: 759354769
     Path: event:/Door Unlock
+  _playerDeathEvent:
+    Guid:
+      Data1: -805663444
+      Data2: 1321625120
+      Data3: 352762542
+      Data4: -616298964
+    Path: event:/Death
+  _oxygenWarningEvent:
+    Guid:
+      Data1: 1335580980
+      Data2: 1257763790
+      Data3: -1708299111
+      Data4: -2038976342
+    Path: event:/Oxygen Warning
+  _oxygenRefillEvent:
+    Guid:
+      Data1: 1748698560
+      Data2: 1090878935
+      Data3: 756638091
+      Data4: 973380989
+    Path: event:/Oxygen Refill
   _mouseEnterEvent:
     Guid:
       Data1: -5527286
