@@ -87,6 +87,9 @@ public class Player : MonoBehaviour, IPausable {
 
     this._gameInput.Disable();
 
+    AudioManager.Instance.StopOxygenWarning();
+    AudioManager.Instance.PlayPlayerDeath();
+
     this.OnPlayerDied?.Invoke();
 
     this._spriteRenderer
