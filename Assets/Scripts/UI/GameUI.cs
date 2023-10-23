@@ -14,7 +14,9 @@ public class GameUI : MonoBehaviour {
   [SerializeField] private GameObject _pauseUI;
   [SerializeField] private ElevatorUI _elevatorUI;
   [SerializeField] private GameObject _hatchUI;
+  [SerializeField] private MessageUI _messageUI;
   [SerializeField] private OxygenUI _oxygenUI;
+  [SerializeField] private OxygenSwitchUI _oxygenSwitchUI;
 
   private const string MainMenuSceneName = "MainMenu";
   private const float TransitionDuration = 0.5f;
@@ -64,11 +66,26 @@ public class GameUI : MonoBehaviour {
     this._pauseManager.OnPaused.AddListener(this.ShowPauseUI);
     this._pauseManager.OnUnpaused.AddListener(this.HidePauseUI);
 
+    EventManager.Instance.OnShowMessageUIEvent.AddListener(this.ShowMessageUI);
+    EventManager.Instance.OnHideMessageUIEvent.AddListener(this.HideMessageUI);
+
     EventManager.Instance.OnShowElevatorUIEvent.AddListener(this.ShowElevatorUI);
     EventManager.Instance.OnHideElevatorUIEvent.AddListener(this.HideElevatorUI);
 
     EventManager.Instance.OnShowHatchUIEvent.AddListener(this.ShowHatchUI);
     EventManager.Instance.OnHideHatchUIEvent.AddListener(this.HideHatchUI);
+
+    EventManager.Instance.OnShowOxygenSwitchUIEvent.AddListener(this.ShowOxygenSwitchUI);
+    EventManager.Instance.OnHideOxygenSwitchUIEvent.AddListener(this.HideOxygenSwitchUI);
+  }
+
+  private void ShowMessageUI(OnShowMessageData data) {
+    this._messageUI.gameObject.SetActive(true);
+    this._messageUI.ShowMessage(data.Message);
+  }
+
+  private void HideMessageUI() {
+    this._messageUI.gameObject.SetActive(false);
   }
 
   private void ShowPauseUI() {
@@ -95,5 +112,14 @@ public class GameUI : MonoBehaviour {
 
   private void HideHatchUI() {
     this._hatchUI.gameObject.SetActive(false);
+  }
+
+  private void ShowOxygenSwitchUI(OnShowOxygenSwitchData data) {
+    this._oxygenSwitchUI.gameObject.SetActive(true);
+    this._oxygenSwitchUI.Show(data);
+  }
+
+  private void HideOxygenSwitchUI() {
+    this._oxygenSwitchUI.gameObject.SetActive(false);
   }
 }
