@@ -12,42 +12,7 @@ public class SpaceshipLights : MonoBehaviour {
   private readonly Color _red = Color.red;
   private readonly Color _redTransparent = new Color(1f, 0f, 0f, 0f);
   private const float FlashDuration = 1f;
-
-  public void FlashRedLight() {
-    foreach (Sequence lightSequence in this._lightSequences) {
-      lightSequence?.Kill();
-    }
-
-    this._lightSequences.Clear();
-
-    foreach (Light2D shipLight in this._lights) {
-      Sequence sequence = DOTween.Sequence();
-      sequence.Append(shipLight.DOColor(this._redTransparent, this._red, FlashDuration));
-      sequence.Append(shipLight.DOColor(this._red, this._redTransparent, FlashDuration));
-      sequence.SetLoops(-1);
-      sequence.SetEase(Ease.InOutCubic);
-      sequence.Play();
-
-      this._lightSequences.Add(sequence);
-    }
-  }
-
-  public void SetWhiteColor() {
-    foreach (Sequence lightSequence in this._lightSequences) {
-      lightSequence?.Kill();
-    }
-
-    this._lightSequences.Clear();
-
-    foreach (Light2D shipLight in this._lights) {
-      Sequence sequence = DOTween.Sequence();
-      sequence.Append(shipLight.DOColor(this._whiteTransparent, FlashDuration));
-      sequence.Append(shipLight.DOColor(this._white, FlashDuration));
-      sequence.SetEase(Ease.InOutCubic);
-      sequence.Play();
-      this._lightSequences.Add(sequence);
-    }
-  }
+  private const float NormalizeDuration = 1f;
 
   private void Awake() {
     this._lightSequences = new List<Sequence>();
@@ -57,15 +22,43 @@ public class SpaceshipLights : MonoBehaviour {
     foreach (Light2D shipLight in this._lights) {
       shipLight.color = new Color(0f, 0f, 0f, 0f);
     }
+
+    EventManager.Instance.OnShipEmergencyEvent.AddListener(this.FlashRedLight);
+    EventManager.Instance.OnShipStatusOkEvent.AddListener(this.SetWhiteColor);
   }
 
-  private void Update() {
-    if (Input.GetKeyDown(KeyCode.R)) {
-      this.FlashRedLight();
+  private void FlashRedLight() {
+    foreach (Sequence lightSequence in this._lightSequences) {
+      lightSequence?.Kill();
     }
 
-    if (Input.GetKeyDown(KeyCode.T)) {
-      this.SetWhiteColor();
+    this._lightSequences.Clear();
+
+    foreach (Light2D shipLight in this._lights) {
+      Sequence sequence = DOTween.Sequence();
+      sequence.Append(shipLight.DOColor(this._redTransparent, this._red, FlashDuration).SetEase(Ease.OutQuint));
+      sequence.Append(shipLight.DOColor(this._red, this._redTransparent, FlashDuration).SetEase(Ease.InQuint));
+      sequence.SetLoops(-1);
+      sequence.Play();
+
+      this._lightSequences.Add(sequence);
+    }
+  }
+
+  private void SetWhiteColor() {
+    foreach (Sequence lightSequence in this._lightSequences) {
+      lightSequence?.Kill();
+    }
+
+    this._lightSequences.Clear();
+
+    foreach (Light2D shipLight in this._lights) {
+      Sequence sequence = DOTween.Sequence();
+      sequence.Append(shipLight.DOColor(this._whiteTransparent, NormalizeDuration));
+      sequence.Append(shipLight.DOColor(this._white, NormalizeDuration));
+      sequence.SetEase(Ease.InOutCubic);
+      sequence.Play();
+      this._lightSequences.Add(sequence);
     }
   }
 }

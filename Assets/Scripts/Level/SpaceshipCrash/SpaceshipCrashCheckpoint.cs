@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class SpaceshipCrashCheckpoint : ICheckpoint {
-
   private readonly ITask _oxygenTask;
   private readonly UnityAction _onComplete;
 
@@ -14,6 +13,7 @@ public class SpaceshipCrashCheckpoint : ICheckpoint {
   }
 
   public void OnStart() {
+    EventManager.Instance.OnShipEmergencyEvent?.Invoke();
     EventManager.Instance.OnShowMessageUIEvent?.Invoke(new OnShowMessageData() {
       Message = "Oh no, the spaceship crashed. How am I going to find my friends?\nOxygen is running low. I need to check the oxygen generators in the cockpit Level.\nElevator should be helpful"
     });
@@ -30,12 +30,12 @@ public class SpaceshipCrashCheckpoint : ICheckpoint {
   }
 
   public void OnComplete() {
-    Debug.Log("Checkpoint completed!");
+    EventManager.Instance.OnShipStatusOkEvent?.Invoke();
     this._onComplete?.Invoke();
   }
 
-  // Since there is only one task.
   private void OnTaskCompleted(ITask _) {
+    // Since there is only one task.
     this.OnComplete();
   }
 }

@@ -19,6 +19,8 @@ public class EventManager {
   public readonly OnTeleportPlayerEvent OnTeleportPlayerEvent;
 
   public readonly EnableOxygenStationsEvent EnableOxygenStationsEvent;
+  public readonly OnShipStatusOkEvent OnShipStatusOkEvent;
+  public readonly OnShipEmergencyEvent OnShipEmergencyEvent;
 
   private EventManager() {
     this.OnShowElevatorUIEvent = new OnShowElevatorUIEvent();
@@ -36,5 +38,7 @@ public class EventManager {
     this.OnTeleportPlayerEvent = new OnTeleportPlayerEvent();
 
     this.EnableOxygenStationsEvent = new EnableOxygenStationsEvent();
+    this.OnShipStatusOkEvent = new OnShipStatusOkEvent();
+    this.OnShipEmergencyEvent = new OnShipEmergencyEvent();
   }
 }
