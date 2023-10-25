@@ -10,6 +10,7 @@ public class AudioManager : Singleton<AudioManager> {
   [SerializeField] private EventReference _playerDeathEvent;
   [SerializeField] private EventReference _oxygenWarningEvent;
   [SerializeField] private EventReference _oxygenRefillEvent;
+  [SerializeField] private EventReference _itemGetScrapsEvent;
 
   [Header("UI Events")]
   [SerializeField] private EventReference _mouseEnterEvent;
@@ -56,6 +57,10 @@ public class AudioManager : Singleton<AudioManager> {
 
   public void PlayOnMouseClickUI() {
     RuntimeManager.PlayOneShot(this._mouseClickEvent);
+  }
+
+  public void PlayTaskComplete() {
+    RuntimeManager.PlayOneShot(this._itemGetScrapsEvent);
   }
 
   protected override void Awake() {

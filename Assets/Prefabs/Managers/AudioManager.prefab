@@ -87,6 +87,20 @@ MonoBehaviour:
       Data3: 756638091
       Data4: 973380989
     Path: event:/Oxygen Refill
+  _radarTestEvent:
+    Guid:
+      Data1: 998579800
+      Data2: 1092236718
+      Data3: 2072874387
+      Data4: 1509465670
+    Path: event:/Radar Test
+  _itemGetScrapsEvent:
+    Guid:
+      Data1: 1623198486
+      Data2: 1091121520
+      Data3: -2075209837
+      Data4: 913503023
+    Path: event:/Item Get Scraps
   _mouseEnterEvent:
     Guid:
       Data1: -5527286

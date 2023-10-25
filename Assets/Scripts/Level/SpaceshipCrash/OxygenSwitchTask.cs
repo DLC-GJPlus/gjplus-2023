@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,6 +13,7 @@ public class OxygenSwitchTask : MonoBehaviour, ITask, IInteractable {
   }
 
   public void Interact() {
+    AudioManager.Instance.PlayTaskComplete();
     EventManager.Instance.EnableOxygenStationsEvent?.Invoke();
     this.CompleteTask();
     EventManager.Instance.OnHideOxygenSwitchUIEvent?.Invoke();
