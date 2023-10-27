@@ -1,5 +1,6 @@
 using Cinemachine;
 using DG.Tweening;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -17,6 +18,7 @@ public class Player : MonoBehaviour, IPausable {
 
   private bool _isPaused;
   private IInteractable _interactable;
+  private Vector3 _spawnPoint;
 
   public void Teleport(Vector3 position) {
     this._rigidbody2D.MovePosition(position);
@@ -29,6 +31,14 @@ public class Player : MonoBehaviour, IPausable {
 
   public void Unpause() {
     this._isPaused = false;
+  }
+
+  public void SetSpawnPoint(Vector3 spawnPoint) {
+    this._spawnPoint = spawnPoint;
+  }
+
+  public void Respawn() {
+    this.Teleport(this._spawnPoint);
   }
 
   private void Awake() {
@@ -105,7 +115,17 @@ public class Player : MonoBehaviour, IPausable {
 
     this._spriteRenderer
       .DOColor(Color.black, 3f)
-      .SetEase(Ease.InOutCubic);
+      .SetEase(Ease.InOutCubic)
+      .OnComplete(() => this.StartCoroutine(this.DeathRespawnCoroutine()));
+  }
+
+  private IEnumerator DeathRespawnCoroutine() {
+    yield return new WaitForSeconds(3f);
+
+    this._spriteRenderer.color = Color.white;
+    this._gameInput.Enable();
+    this.OxygenTank.SetOxygen(45);
+    this.Respawn();
   }
 
   private void GatherInput(out Vector2 moveInput, out bool wasInteractPressed) {

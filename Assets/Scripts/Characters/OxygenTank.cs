@@ -29,6 +29,17 @@ public class OxygenTank : MonoBehaviour, IPausable {
     this._isPaused = false;
   }
 
+  public void SetOxygen(int amount) {
+    this.Supply = amount;
+
+    if (this._consumeCoroutine != null) {
+      return;
+    }
+
+    this._consumeCoroutine = this.ConsumeOxygen();
+    this.StartCoroutine(this._consumeCoroutine);
+  }
+
   public void StartOxygenRefill() {
     EventManager.Instance.OnShowMessageUIEvent?.Invoke(new OnShowMessageData() {
       Message = "Amazing! Now with that resolved I can figure out where I crash landed and where did my friends disappeared. Maybe I can rescue some of them."
@@ -65,7 +76,8 @@ public class OxygenTank : MonoBehaviour, IPausable {
     PauseManager.Instance.OnPaused.AddListener(this.Pause);
     PauseManager.Instance.OnUnpaused.AddListener(this.Unpause);
 
-    this.StartCoroutine(this.ConsumeOxygen());
+    this._consumeCoroutine = this.ConsumeOxygen();
+    this.StartCoroutine(this._consumeCoroutine);
   }
 
   private void OnDestroy() {
@@ -111,6 +123,7 @@ public class OxygenTank : MonoBehaviour, IPausable {
       }
     }
 
+    this._consumeCoroutine = null;
     this.OnOutOfOxygen?.Invoke();
   }
 }

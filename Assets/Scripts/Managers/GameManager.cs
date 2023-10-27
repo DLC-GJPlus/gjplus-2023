@@ -16,6 +16,7 @@ public class GameManager : Singleton<GameManager> {
 
   private Dictionary<CheckpointType, ICheckpoint> _checkpoints;
   private ICheckpoint _currentCheckpoint;
+  private Vector3 _spawnPoint;
 
   protected override void Awake() {
     base.Awake();
@@ -73,6 +74,7 @@ public class GameManager : Singleton<GameManager> {
     }
 
     this._currentCheckpoint.OnStart();
-    this.Player.Teleport(this._currentCheckpoint.GetPlayerSpawnPoint());
+    this._player.SetSpawnPoint(this._currentCheckpoint.GetPlayerSpawnPoint());
+    this._player.Respawn();
   }
 }
