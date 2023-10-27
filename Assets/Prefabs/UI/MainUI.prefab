@@ -188,11 +188,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1576119485427633655, guid: d4fffbbe643e44477ad453d5849aeaa4, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1576119485427633655, guid: d4fffbbe643e44477ad453d5849aeaa4, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1576119485427633655, guid: d4fffbbe643e44477ad453d5849aeaa4, type: 3}
       propertyPath: m_AnchorMin.x
@@ -204,11 +204,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1576119485427633655, guid: d4fffbbe643e44477ad453d5849aeaa4, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -3013.304
+      value: 826.6963
       objectReference: {fileID: 0}
     - target: {fileID: 1576119485427633655, guid: d4fffbbe643e44477ad453d5849aeaa4, type: 3}
       propertyPath: m_SizeDelta.y
-      value: -2076.0803
+      value: 82.88965
       objectReference: {fileID: 0}
     - target: {fileID: 1576119485427633655, guid: d4fffbbe643e44477ad453d5849aeaa4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -509,6 +509,10 @@ PrefabInstance:
     - target: {fileID: 7089521282300027862, guid: 8298eb29bd2ea4c17aa73c6d5821f4fb, type: 3}
       propertyPath: m_Name
       value: MessageUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089521282300027862, guid: 8298eb29bd2ea4c17aa73c6d5821f4fb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7701652555128432463, guid: 8298eb29bd2ea4c17aa73c6d5821f4fb, type: 3}
       propertyPath: m_Pivot.x

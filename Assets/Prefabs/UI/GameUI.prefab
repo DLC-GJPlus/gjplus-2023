@@ -2418,10 +2418,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2618504365972607320, guid: 660c5eceab38649aeadbb0bb72911b6a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4872006921904101916, guid: 660c5eceab38649aeadbb0bb72911b6a, type: 3}
       propertyPath: _gameUI
       value: 
