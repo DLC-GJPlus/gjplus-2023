@@ -100,12 +100,8 @@ public class Player : MonoBehaviour, IPausable {
       return;
     }
 
-    if (!interactable.IsInteractable) {
-      return;
-    }
-
     interactable.OnInteractableSelected();
-    EventManager.Instance.OnShowInteractUIEvent?.Invoke();
+    EventManager.Instance.OnShowInteractUIEvent?.Invoke(new OnShowInteractUIData() { IsInteractive = interactable.IsInteractable});
     this._interactable = interactable;
   }
 
