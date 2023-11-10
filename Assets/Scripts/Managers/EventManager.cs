@@ -15,6 +15,10 @@ public class EventManager {
   public readonly OnShowMessageUIEvent OnShowMessageUIEvent;
   public readonly OnHideMessageUIEvent OnHideMessageUIEvent;
 
+  public readonly OnShowInteractUIEvent OnShowInteractUIEvent;
+  public readonly OnHideInteractUIEvent OnHideInteractUIEvent;
+  public readonly OnInteractUIEvent OnInteractUIEvent;
+
   // Game Events
   public readonly OnTeleportPlayerEvent OnTeleportPlayerEvent;
 
@@ -23,6 +27,7 @@ public class EventManager {
   public readonly OnShipEmergencyEvent OnShipEmergencyEvent;
 
   private EventManager() {
+    // UI Events
     this.OnShowElevatorUIEvent = new OnShowElevatorUIEvent();
     this.OnHideElevatorUIEvent = new OnHideElevatorUIEvent();
 
@@ -35,6 +40,11 @@ public class EventManager {
     this.OnShowMessageUIEvent = new OnShowMessageUIEvent();
     this.OnHideMessageUIEvent = new OnHideMessageUIEvent();
 
+    this.OnShowInteractUIEvent = new OnShowInteractUIEvent();
+    this.OnHideInteractUIEvent = new OnHideInteractUIEvent();
+    this.OnInteractUIEvent = new OnInteractUIEvent();
+
+    // Game Events
     this.OnTeleportPlayerEvent = new OnTeleportPlayerEvent();
 
     this.EnableOxygenStationsEvent = new EnableOxygenStationsEvent();

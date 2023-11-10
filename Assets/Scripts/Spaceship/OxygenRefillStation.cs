@@ -3,7 +3,11 @@ using UnityEngine;
 public class OxygenRefillStation : MonoBehaviour, IInteractable {
   private bool _isEnabled;
 
-  public void Interact() {}
+  public bool IsInteractable => this._isEnabled;
+
+  public void Interact() {
+    GameManager.Instance.Player.OxygenTank.StartOxygenRefill();
+  }
 
   public void OnInteractableSelected() {
     if (!this._isEnabled) {

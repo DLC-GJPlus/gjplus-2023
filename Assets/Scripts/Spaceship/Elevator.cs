@@ -1,11 +1,14 @@
 using UnityEngine;
 
 public class Elevator : MonoBehaviour, IInteractable {
-  public void Interact() {}
+  public bool IsInteractable => true;
+
+  public void Interact() {
+    EventManager.Instance.OnShowElevatorUIEvent?.Invoke();
+  }
 
   public void OnInteractableSelected() {
     AudioManager.Instance.PlayDoorUnlock();
-    EventManager.Instance.OnShowElevatorUIEvent?.Invoke();
   }
 
   public void OnInteractableDeselected() {

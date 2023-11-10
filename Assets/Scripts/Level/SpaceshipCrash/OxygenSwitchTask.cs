@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,17 +11,16 @@ public class OxygenSwitchTask : MonoBehaviour, ITask, IInteractable {
     this._onCompleted = onCompleted;
   }
 
+  public bool IsInteractable => !this.IsCompleted();
+
   public void Interact() {
-    AudioManager.Instance.PlayTaskComplete();
-    EventManager.Instance.EnableOxygenStationsEvent?.Invoke();
-    this.CompleteTask();
-    EventManager.Instance.OnHideOxygenSwitchUIEvent?.Invoke();
+    EventManager.Instance.OnShowOxygenSwitchUIEvent?.Invoke(new OnShowOxygenSwitchData() {
+      OnComplete = this.CompleteTask
+    });
   }
 
   public void OnInteractableSelected() {
-    EventManager.Instance.OnShowOxygenSwitchUIEvent?.Invoke(new OnShowOxygenSwitchData() {
-      EnableOxygenAction = this.Interact
-    });
+
   }
 
   public void OnInteractableDeselected() {

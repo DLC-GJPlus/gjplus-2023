@@ -1,6 +1,5 @@
 using Cinemachine;
 using DG.Tweening;
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -20,12 +19,17 @@ public class Player : MonoBehaviour, IPausable {
   private bool _isPaused;
   private IInteractable _interactable;
   private Vector3 _spawnPoint;
+
+  // Animator variables
   private static readonly int Walk = Animator.StringToHash("Walk");
   private static readonly int Idle = Animator.StringToHash("Idle");
+  private static readonly int X = Animator.StringToHash("x");
+  private static readonly int Y = Animator.StringToHash("y");
 
   public void Teleport(Vector3 position) {
     this._rigidbody2D.MovePosition(position);
-    CinemachineCore.Instance.OnTargetObjectWarped(this.transform, position - this.transform.position);
+    Transform thisTransform = this.transform;
+    CinemachineCore.Instance.OnTargetObjectWarped(thisTransform, position - thisTransform.position);
   }
 
   public void Pause() {
@@ -61,6 +65,8 @@ public class Player : MonoBehaviour, IPausable {
 
     PauseManager.Instance.OnPaused.AddListener(this.Pause);
     PauseManager.Instance.OnUnpaused.AddListener(this.Unpause);
+
+    EventManager.Instance.OnInteractUIEvent.AddListener(this.Interact);
   }
 
   private void FixedUpdate() {
@@ -70,8 +76,8 @@ public class Player : MonoBehaviour, IPausable {
 
     this.GatherInput(out Vector2 moveInput, out bool wasInteractPressed);
 
-    this._animator.SetFloat("x", moveInput.x);
-    this._animator.SetFloat("y", moveInput.y);
+    this._animator.SetFloat(X, moveInput.x);
+    this._animator.SetFloat(Y, moveInput.y);
 
     float magnitude = moveInput.magnitude;
     if (magnitude > 0.1f) {
@@ -94,17 +100,23 @@ public class Player : MonoBehaviour, IPausable {
       return;
     }
 
+    if (!interactable.IsInteractable) {
+      return;
+    }
+
     interactable.OnInteractableSelected();
+    EventManager.Instance.OnShowInteractUIEvent?.Invoke();
     this._interactable = interactable;
   }
 
   private void OnTriggerExit2D(Collider2D other) {
     IInteractable interactable = other.GetComponent<IInteractable>();
-    if (interactable == null) {
+    if (interactable == null || this._interactable == null) {
       return;
     }
 
     this._interactable.OnInteractableDeselected();
+    EventManager.Instance.OnHideInteractUIEvent?.Invoke();
     this._interactable = null;
   }
 

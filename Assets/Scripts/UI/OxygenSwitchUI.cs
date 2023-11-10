@@ -9,14 +9,17 @@ public class OxygenSwitchUI : MonoBehaviour {
   private RectTransform _rectTransform;
 
   private Sequence _tweenSequence;
-  private UnityAction _enableOxygen;
+  private UnityAction _completeTaskAction;
 
   public void Show(OnShowOxygenSwitchData data) {
-    this._enableOxygen = data.EnableOxygenAction;
+    this._completeTaskAction = data.OnComplete;
   }
 
   public void EnableOxygen() {
-    this._enableOxygen?.Invoke();
+    AudioManager.Instance.PlayTaskComplete();
+    EventManager.Instance.EnableOxygenStationsEvent?.Invoke();
+    this._completeTaskAction();
+    EventManager.Instance.OnHideOxygenSwitchUIEvent?.Invoke();
   }
 
   private void Awake() {

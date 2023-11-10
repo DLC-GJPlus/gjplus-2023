@@ -1,12 +1,14 @@
 using UnityEngine;
 
 public class Hatch : MonoBehaviour, IInteractable {
-  public void Interact() {
+  public bool IsInteractable => true;
 
+  public void Interact() {
+    EventManager.Instance.OnShowHatchUIEvent?.Invoke();
   }
 
   public void OnInteractableSelected() {
-    EventManager.Instance.OnShowHatchUIEvent?.Invoke();
+
   }
 
   public void OnInteractableDeselected() {
