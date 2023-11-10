@@ -8,8 +8,17 @@ public class UIButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
   [SerializeField] private UnityEvent _onClick;
   [SerializeField] private bool _muteClickSound;
   [SerializeField] private bool _muteHoverSound;
+  [SerializeField] private Color _interactableColor = new Color(1, 1, 1, 1);
+  [SerializeField] private Color _notInteractableColor = new Color(0.5f, 0.5f, 0.5f, 1);
 
-  public bool IsInteractable = true;
+  public bool IsInteractable {
+    get => this._isInteractable;
+    set {
+      this._isInteractable = value;
+      this._image.color = this._isInteractable ? this._interactableColor : this._notInteractableColor;
+    }
+  }
+  private bool _isInteractable = true;
 
   private const float ScaleUpValue = 1.1f;
   private const float ScaleDownValue = 0.9f;
@@ -24,21 +33,21 @@ public class UIButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
   private Sequence _tweenSequence;
 
   public void OnPointerClick(PointerEventData eventData) {
-    if (!this.IsInteractable) {
+    if (!this._isInteractable) {
       return;
     }
 
     if (!this._muteClickSound) {
       AudioManager.Instance.PlayOnMouseClickUI();
     }
-    
+
     this.DoFadeAnimation(() => {
       this._onClick?.Invoke();
     });
   }
 
   public void OnPointerEnter(PointerEventData eventData) {
-    if (!this.IsInteractable) {
+    if (!this._isInteractable) {
       return;
     }
 
@@ -55,7 +64,7 @@ public class UIButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
   }
 
   private void DoBounceAnimation(UnityAction onComplete = null) {
-    this.IsInteractable = false;
+    this._isInteractable = false;
     this._tweenSequence?.Kill();
     this._rectTransform.localScale = Vector3.one;
 
@@ -65,7 +74,7 @@ public class UIButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     this._tweenSequence.Append(this._rectTransform.DOScale(Vector3.one, BounceAnimationDuration));
     this._tweenSequence.OnComplete(() => {
       this._tweenSequence = null;
-      this.IsInteractable = true;
+      this._isInteractable = true;
       onComplete?.Invoke();
     });
     this._tweenSequence.SetEase(Ease.InOutSine);
@@ -73,7 +82,7 @@ public class UIButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
   }
 
   private void DoFadeAnimation(UnityAction onComplete = null) {
-    this.IsInteractable = false;
+    this._isInteractable = false;
     this._tweenSequence?.Kill();
     this._rectTransform.localScale = Vector3.one;
 
@@ -82,7 +91,7 @@ public class UIButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     this._tweenSequence.Append(this._image.DOColor(this._defaultColor, ClickAnimationDuration));
     this._tweenSequence.OnComplete(() => {
       this._tweenSequence = null;
-      this.IsInteractable = true;
+      this._isInteractable = true;
       onComplete?.Invoke();
     });
     this._tweenSequence.SetEase(Ease.InOutSine);
