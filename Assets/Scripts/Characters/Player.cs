@@ -1,5 +1,6 @@
 using Cinemachine;
 using DG.Tweening;
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -19,6 +20,8 @@ public class Player : MonoBehaviour, IPausable {
   private bool _isPaused;
   private IInteractable _interactable;
   private Vector3 _spawnPoint;
+  private static readonly int Walk = Animator.StringToHash("Walk");
+  private static readonly int Idle = Animator.StringToHash("Idle");
 
   public void Teleport(Vector3 position) {
     this._rigidbody2D.MovePosition(position);
@@ -70,10 +73,13 @@ public class Player : MonoBehaviour, IPausable {
     this._animator.SetFloat("x", moveInput.x);
     this._animator.SetFloat("y", moveInput.y);
 
-    if (moveInput.magnitude > 0.15f) {
-      this._animator.SetTrigger("Walk");
-    } else if (moveInput.magnitude < 0.1f) {
-      this._animator.SetTrigger("Idle");
+    float magnitude = moveInput.magnitude;
+    if (magnitude > 0.1f) {
+      this._animator.SetTrigger(Walk);
+      this._animator.ResetTrigger(Idle);
+    } else if (magnitude < 0.06f) {
+      this._animator.SetTrigger(Idle);
+      this._animator.ResetTrigger(Walk);
     }
 
     this.Move(moveInput);
