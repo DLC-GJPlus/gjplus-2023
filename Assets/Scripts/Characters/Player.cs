@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class Player : MonoBehaviour, IPausable {
   [SerializeField] private float _speed;
-
+  [SerializeField] private float _suffocationDuration = 5f;
   public UnityEvent OnPlayerDied { get; private set; }
   public OxygenTank OxygenTank { get; private set; }
 
@@ -25,6 +25,8 @@ public class Player : MonoBehaviour, IPausable {
   private static readonly int Idle = Animator.StringToHash("Idle");
   private static readonly int X = Animator.StringToHash("x");
   private static readonly int Y = Animator.StringToHash("y");
+
+  private IEnumerator _dieCoroutine;
 
   public void Teleport(Vector3 position) {
     this._rigidbody2D.MovePosition(position);
@@ -117,6 +119,20 @@ public class Player : MonoBehaviour, IPausable {
   }
 
   private void Die() {
+    // Check if there is a paused coroutine
+    if (this._dieCoroutine != null) {
+      // continue coroutine instead
+      // TODO
+    }
+
+    this._dieCoroutine = this.DieCoroutine();
+    this.StartCoroutine(this._dieCoroutine);
+  }
+
+  private IEnumerator DieCoroutine() {
+    EventManager.Instance.OnPlayerSuffocating?.Invoke(this._suffocationDuration);
+    yield return new WaitForSeconds(5f);
+
     this._interactable?.OnInteractableDeselected();
     this._interactable = null;
 

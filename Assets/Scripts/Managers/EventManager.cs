@@ -26,6 +26,9 @@ public class EventManager {
   public readonly OnShipStatusOkEvent OnShipStatusOkEvent;
   public readonly OnShipEmergencyEvent OnShipEmergencyEvent;
 
+  public readonly OnPlayerSuffocating OnPlayerSuffocating;
+  public readonly OnPlayerRecovered OnPlayerRecovered;
+
   private EventManager() {
     // UI Events
     this.OnShowElevatorUIEvent = new OnShowElevatorUIEvent();
@@ -50,5 +53,8 @@ public class EventManager {
     this.EnableOxygenStationsEvent = new EnableOxygenStationsEvent();
     this.OnShipStatusOkEvent = new OnShipStatusOkEvent();
     this.OnShipEmergencyEvent = new OnShipEmergencyEvent();
+
+    this.OnPlayerSuffocating = new OnPlayerSuffocating();
+    this.OnPlayerRecovered = new OnPlayerRecovered();
   }
 }
